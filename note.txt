@@ -1,0 +1,5 @@
+# Framework Testing untuk JavaScript
+Di JavaScript ada banyak opsi framework testing yang bisa Anda gunakan, salah satu yang terbaik dan populer digunakan adalah Jest/.
+https://jestjs.io/
+
+Jest merupakan testing framework yang dikembangkan oleh Facebook. Fokus Jest ialah menyederhanakan dan meningkatkan kompatibilitas automation testing pada proyek JavaScript dalam skala besar sekalipun. Jest dapat digunakan pada aplikasi Node.js dan Front-End Web seperti React, Angular, Vue, dan lainnya. Menggunakan framework Jest sangat mudah, pasalnya ia tidak membutuhkan konfigurasi saat pertama kali digunakan
