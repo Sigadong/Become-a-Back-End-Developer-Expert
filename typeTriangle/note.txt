@@ -1,0 +1,9 @@
+# Contoh Automation Testing di JavaScript
+menguji kode JavaScript sebenarnya kita juga menggunakan kode JavaScript.
+Di Node.js, kita dapat membuat kode testing dengan bantuan core module 'assert'.
+
+Contoh kode testing dalam menguji fungsi typeTriangle (mendeteksi jenis segitiga).
+Fungsi tersebut berguna untuk mendeteksi jenis segitiga berdasarkan inputan sisi. Spesifikasinya sebagai berikut:
+- Bila semua sisi sama, mengembalikan “Segitiga sama sisi”
+- Bila sisi ada yang sama, mengembalikan “Segitiga sama kaki”
+- Bila semua sisi berbeda, mengembalikan “Segitiga sembarang”
