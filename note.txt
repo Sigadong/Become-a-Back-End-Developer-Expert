@@ -1,22 +1,32 @@
-# Menulis Skenario Test
-Pengembangan aplikasi dengan menerapkan kultur TDD diarahkan berdasarkan testing.
-Jadi, tentu penting untuk memiliki skenario testing di awal sebelum Anda mulai membangun sebuah fitur baru.
+# Menerapkan Automation Testing dalam Membangun Program Matematika Dasar
+ membuat program yang dapat menambahkan (add), mengurangi (subtract), mengalikan (multiply), dan membagi (divide) dua buah nilai angka. Fungsi-fungsi operasi tersebut akan kita bungkus dalam sebuah objek bernama MathBasic.
 
-ada salah satu format yang banyak digunakan perusahaan dalam menetapkan acceptance scenario, yakni feature files.
+Berikut adalah skenario pengujian untuk MathBasic:
 
-Biasanya feature files dituliskan dengan dengan format Given-When-Then (GWT). 
-Given merupakan sebuah keadaan yang diberikan ketika pengujian dilakukan, 
-When merupakan aksi yang dilakukan, dan 
-Then merupakan hasil yang diharapkan.
+Sebuah objek MathBasic
+ - Harus memiliki fungsi add, subtract, multiply, dan divide
+ - Sebuah fungsi add:
+  - Harus mengembalikan eror ketika tidak diberikan dua parameter
+  - Harus mengembalikan eror ketika diberikan parameter selain number
+  - Harus mengembalikan nilai a + b ketika diberikan dua parameter number
 
-Dari feature files tersebut QA engineer bisa mengubah formatnya ke kode testing seperti Jest atau framework lainnya.
+Sebuah fungsi subtract:
+  - Harus mengembalikan eror ketika tidak diberikan dua parameter
+  - Harus mengembalikan eror ketika diberikan parameter selain number
+  - Harus mengembalikan nilai a - b ketika diberikan dua parameter number
 
-Ketahuilah bahwa feature files menggunakan bahasa Gherkin.
-Bahasa ini cocok digunakan dalam menuliskan skenario pengujian karena simpel, mudah dibaca oleh nonteknikal, dan
-membantu kita untuk fokus terhadap behavior dari fitur yang akan dibangun (dikenal dengan istilah Behavior-Driven Development [BDD]).
+Sebuah fungsi multiply:
+  - Harus mengembalikan eror ketika tidak diberikan dua parameter
+  - Harus mengembalikan eror ketika diberikan parameter selain number
+  - Harus mengembalikan nilai a * b ketika diberikan dua parameter number
 
-Karena kelebihannya ini, terdapat tools yang memudahkan dalam menerapkan BDD yakni, cucumber. 
-Pasalnya, dengan cucumber, feature files dapat digunakan sebagai dasar skenario pengujian secara langsung dan kode testingnya pun dapat dituliskan menggunakan format GWT.
+Sebuah fungsi divide: 
+  - Harus mengembalikan eror ketika tidak diberikan dua parameter
+  - Harus mengembalikan eror ketika diberikan parameter selain number
+  - Harus mengembalikan nilai a / b ketika diberikan dua parameter number
 
-Perhatian:
-Menggunakan bahasa Indonesia dalam menuliskan test case di JavaScript bukanlah best practice. Maka dari itu, tetap gunakan bahasa Inggris ya!
+Dengan terlebih dahulu menentukan skenario gagal (eror), untuk memastikan bahwa sebuah unit yang diuji dapat menangani berbagai anomali yang terprediksi mungkin terjadi. Terlebih variabel di JavaScript bersifat dynamic type, sehingga pengecekan tipe data diperlukan bila Anda menganggap tipe data adalah hal yang ketat untuk diuji.
+
+Note:
+Secara alami variabel pada JavaScript bersifat dynamic type. Hal ini ini menjadi tantangan tersendiri bagi developer agar lebih disiplin dan berhati-hati dalam memberikan nilai pada variabel atau parameter fungsi. Bila salah memberikan tipe data, besar kemungkinan aplikasi akan eror.
+Untuk mengurangi kesalahan, Anda bisa menerapkan pengujian tipe data. Namun, kekurangannya adalah skenario pengujian menjadi gemuk dan tidak fokus ke bisnis logic, dimana bisnis logic lebih esensial untuk diuji. Karena alasan itu, banyak developer yang menghiraukan pengujian tipe data pada JavaScript.
