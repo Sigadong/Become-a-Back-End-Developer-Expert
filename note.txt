@@ -1,32 +1,33 @@
-# Menerapkan Automation Testing dalam Membangun Program Matematika Dasar
- membuat program yang dapat menambahkan (add), mengurangi (subtract), mengalikan (multiply), dan membagi (divide) dua buah nilai angka. Fungsi-fungsi operasi tersebut akan kita bungkus dalam sebuah objek bernama MathBasic.
+## Test Double
+Test Doubles merupakan istilah yang digunakan untuk menggantikan implementasi yang dibutuhkan dalam menjalankan pengujian
+pada sistem yang diuji. Karena implementasinya dipalsukan, maka kita juga bisa menguji beberapa behavior yang mungkin terjadi
+(seperti eror atau behavior lainnya) secara mudah. Tujuannya tidak lain untuk memenuhi skenario pengujian.
 
-Berikut adalah skenario pengujian untuk MathBasic:
+Ada beberapa macam-macam Test Double dalam praktiknya, yakni dummy, stub, mock, dan spy. Untuk memudahkan pemahaman, kita
+contohkan kembali dalam sistem peluncuran roket.
 
-Sebuah objek MathBasic
- - Harus memiliki fungsi add, subtract, multiply, dan divide
- - Sebuah fungsi add:
-  - Harus mengembalikan eror ketika tidak diberikan dua parameter
-  - Harus mengembalikan eror ketika diberikan parameter selain number
-  - Harus mengembalikan nilai a + b ketika diberikan dua parameter number
+Anggaplah sistem peluncuran roket kita sudah dikembangkan dan sekarang ia memiliki fungsi tambahan yaitu memperbaiki roket
+yang ada pada properti this.rockets. Untuk memperbaikinya, RocketLauncher membutuhkan instance RocketRepairKit yang memiliki
+fungsi repair. Jadi, sekarang RocketLauncher memiliki dependencies terhadap instance RocketRepairKit.
 
-Sebuah fungsi subtract:
-  - Harus mengembalikan eror ketika tidak diberikan dua parameter
-  - Harus mengembalikan eror ketika diberikan parameter selain number
-  - Harus mengembalikan nilai a - b ketika diberikan dua parameter number
+1.Dummy
+Dummy adalah teknik di mana kita hanya memberikan sembarang nilai pada sebuah parameter (fungsi atau constructor).
+Hal tersebut karena parameter tersebut butuh untuk diisi nilainya, meskipun sebenarnya nilainya tidak digunakan sama sekali.
 
-Sebuah fungsi multiply:
-  - Harus mengembalikan eror ketika tidak diberikan dua parameter
-  - Harus mengembalikan eror ketika diberikan parameter selain number
-  - Harus mengembalikan nilai a * b ketika diberikan dua parameter number
+2.Stub
+Stub merupakan teknik dalam mengubah behavior objek ( palsu atau asli) agar hasilnya
+terprediksi guna memenuhi skenario pengujian. Contohnya teknik stub dapat digunakan ketika Anda hendak menguji fungsi
+repairAllRockets, tetapi dengan harapan fungsi RocketRepairKit.repair membangkitkan eror. Karena sulit untuk membuat fungsi
+repair membangkitkan eror pada behavior aslinya, maka Anda bisa men-stub fungsi repair agar behavior-nya sesuai dengan yang dikehendaki.
 
-Sebuah fungsi divide: 
-  - Harus mengembalikan eror ketika tidak diberikan dua parameter
-  - Harus mengembalikan eror ketika diberikan parameter selain number
-  - Harus mengembalikan nilai a / b ketika diberikan dua parameter number
+3.Mock
+Mock serupa dengan stub, di mana dengan mock kita bisa mengubah implementasi dari sebuah
+objek agar memiliki behavior yang terprediksi. Bedanya, ketika Anda melakukan mock, selain memastikan hasil dari sistem yang
+diuji sesuai, Anda juga memiliki ekspektasi terhadap implementasi objek yang diubah diperlakukan.
+->Dalam Jest, untuk melakukan mock terhadap implementasi fungsi gunakan method jest.fn().mockImplementation().
 
-Dengan terlebih dahulu menentukan skenario gagal (eror), untuk memastikan bahwa sebuah unit yang diuji dapat menangani berbagai anomali yang terprediksi mungkin terjadi. Terlebih variabel di JavaScript bersifat dynamic type, sehingga pengecekan tipe data diperlukan bila Anda menganggap tipe data adalah hal yang ketat untuk diuji.
-
-Note:
-Secara alami variabel pada JavaScript bersifat dynamic type. Hal ini ini menjadi tantangan tersendiri bagi developer agar lebih disiplin dan berhati-hati dalam memberikan nilai pada variabel atau parameter fungsi. Bila salah memberikan tipe data, besar kemungkinan aplikasi akan eror.
-Untuk mengurangi kesalahan, Anda bisa menerapkan pengujian tipe data. Namun, kekurangannya adalah skenario pengujian menjadi gemuk dan tidak fokus ke bisnis logic, dimana bisnis logic lebih esensial untuk diuji. Karena alasan itu, banyak developer yang menghiraukan pengujian tipe data pada JavaScript.
+4.Spy
+Test Double terakhir adalah spy. Serupa dengan mock tetapi tidak serupa dengan stub. Melalui spy kita bisa melihat apakah
+sebuah fungsi dari objek yang menjadi dependencies terhadap sistem yang diuji benar-benar dipanggil dan diperlakukan dengan
+sesuai atau tidak. Yap, serupa dengan mock kan? Bedanya, spy tidak mengubah implementasi fungsinya sehingga behavior fungsi
+tersebut masih sama seperti aslinya. Sesuai namanya, ia hanya bisa “memata-matai” saja.
