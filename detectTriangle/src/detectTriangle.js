@@ -1,4 +1,4 @@
-const typeTriangle = (sideA, sideB, sideC) => {
+const detectTriangle = (sideA, sideB, sideC) => {
   if (sideA === sideB && sideB === sideC) {
     return 'Segitiga sama sisi';
   }
@@ -10,4 +10,4 @@ const typeTriangle = (sideA, sideB, sideC) => {
   return 'Segitiga sembarang';
 };
 
-module.exports = typeTriangle;
+module.exports = detectTriangle;

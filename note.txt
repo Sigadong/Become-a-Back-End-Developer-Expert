@@ -1,5 +1,22 @@
-# Framework Testing untuk JavaScript
-Di JavaScript ada banyak opsi framework testing yang bisa Anda gunakan, salah satu yang terbaik dan populer digunakan adalah Jest/.
-https://jestjs.io/
+# Menulis Skenario Test
+Pengembangan aplikasi dengan menerapkan kultur TDD diarahkan berdasarkan testing.
+Jadi, tentu penting untuk memiliki skenario testing di awal sebelum Anda mulai membangun sebuah fitur baru.
 
-Jest merupakan testing framework yang dikembangkan oleh Facebook. Fokus Jest ialah menyederhanakan dan meningkatkan kompatibilitas automation testing pada proyek JavaScript dalam skala besar sekalipun. Jest dapat digunakan pada aplikasi Node.js dan Front-End Web seperti React, Angular, Vue, dan lainnya. Menggunakan framework Jest sangat mudah, pasalnya ia tidak membutuhkan konfigurasi saat pertama kali digunakan
+ada salah satu format yang banyak digunakan perusahaan dalam menetapkan acceptance scenario, yakni feature files.
+
+Biasanya feature files dituliskan dengan dengan format Given-When-Then (GWT). 
+Given merupakan sebuah keadaan yang diberikan ketika pengujian dilakukan, 
+When merupakan aksi yang dilakukan, dan 
+Then merupakan hasil yang diharapkan.
+
+Dari feature files tersebut QA engineer bisa mengubah formatnya ke kode testing seperti Jest atau framework lainnya.
+
+Ketahuilah bahwa feature files menggunakan bahasa Gherkin.
+Bahasa ini cocok digunakan dalam menuliskan skenario pengujian karena simpel, mudah dibaca oleh nonteknikal, dan
+membantu kita untuk fokus terhadap behavior dari fitur yang akan dibangun (dikenal dengan istilah Behavior-Driven Development [BDD]).
+
+Karena kelebihannya ini, terdapat tools yang memudahkan dalam menerapkan BDD yakni, cucumber. 
+Pasalnya, dengan cucumber, feature files dapat digunakan sebagai dasar skenario pengujian secara langsung dan kode testingnya pun dapat dituliskan menggunakan format GWT.
+
+Perhatian:
+Menggunakan bahasa Indonesia dalam menuliskan test case di JavaScript bukanlah best practice. Maka dari itu, tetap gunakan bahasa Inggris ya!
