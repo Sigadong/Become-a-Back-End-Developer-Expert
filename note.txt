@@ -1,33 +1,31 @@
-## Test Double
-Test Doubles merupakan istilah yang digunakan untuk menggantikan implementasi yang dibutuhkan dalam menjalankan pengujian
-pada sistem yang diuji. Karena implementasinya dipalsukan, maka kita juga bisa menguji beberapa behavior yang mungkin terjadi
-(seperti eror atau behavior lainnya) secara mudah. Tujuannya tidak lain untuk memenuhi skenario pengujian.
+# Menerapkan Automation Testing dalam Membangun Program Perhitungan Bangun Dua Dimensi
+Saat ini kita akan mengembangkan proyek math-api untuk menghitung luas dan keliling bangun datar (Persegi dan Segitiga). 
 
-Ada beberapa macam-macam Test Double dalam praktiknya, yakni dummy, stub, mock, dan spy. Untuk memudahkan pemahaman, kita
-contohkan kembali dalam sistem peluncuran roket.
+Formula(rumus) yang ada dibalik perhitungannya.
+ 2D Figure(Bangun Datar)     | Perimeter(Keliling)   | Area(Luas)
+-Rectangle (Persegi Panjang) | 2 * (length + width)  | length * width
+-Triangle (Segitiga)         | (sideA + sideB) + base| (base * height) / 2
 
-Anggaplah sistem peluncuran roket kita sudah dikembangkan dan sekarang ia memiliki fungsi tambahan yaitu memperbaiki roket
-yang ada pada properti this.rockets. Untuk memperbaikinya, RocketLauncher membutuhkan instance RocketRepairKit yang memiliki
-fungsi repair. Jadi, sekarang RocketLauncher memiliki dependencies terhadap instance RocketRepairKit.
+Dari perhitungan tersebut, kita akan membuat empat buah fungsi baru yakni calculateRectanglePerimeter,
+calculateRectangleArea, calculateTrianglePerimeter, dan calculateTriangleArea. Fungsi-fungsi tersebut akan kita bungkus
+dalam sebuah objek dari class bernama FigureCalculator.
 
-1.Dummy
-Dummy adalah teknik di mana kita hanya memberikan sembarang nilai pada sebuah parameter (fungsi atau constructor).
-Hal tersebut karena parameter tersebut butuh untuk diisi nilainya, meskipun sebenarnya nilainya tidak digunakan sama sekali.
-
-2.Stub
-Stub merupakan teknik dalam mengubah behavior objek ( palsu atau asli) agar hasilnya
-terprediksi guna memenuhi skenario pengujian. Contohnya teknik stub dapat digunakan ketika Anda hendak menguji fungsi
-repairAllRockets, tetapi dengan harapan fungsi RocketRepairKit.repair membangkitkan eror. Karena sulit untuk membuat fungsi
-repair membangkitkan eror pada behavior aslinya, maka Anda bisa men-stub fungsi repair agar behavior-nya sesuai dengan yang dikehendaki.
-
-3.Mock
-Mock serupa dengan stub, di mana dengan mock kita bisa mengubah implementasi dari sebuah
-objek agar memiliki behavior yang terprediksi. Bedanya, ketika Anda melakukan mock, selain memastikan hasil dari sistem yang
-diuji sesuai, Anda juga memiliki ekspektasi terhadap implementasi objek yang diubah diperlakukan.
-->Dalam Jest, untuk melakukan mock terhadap implementasi fungsi gunakan method jest.fn().mockImplementation().
-
-4.Spy
-Test Double terakhir adalah spy. Serupa dengan mock tetapi tidak serupa dengan stub. Melalui spy kita bisa melihat apakah
-sebuah fungsi dari objek yang menjadi dependencies terhadap sistem yang diuji benar-benar dipanggil dan diperlakukan dengan
-sesuai atau tidak. Yap, serupa dengan mock kan? Bedanya, spy tidak mengubah implementasi fungsinya sehingga behavior fungsi
-tersebut masih sama seperti aslinya. Sesuai namanya, ia hanya bisa “memata-matai” saja.
+#Skenario Pengujian:
+*Sebuah objek FigureCalculator
+  -Harus memiliki fungsi calculateRectanglePerimeter, calculateRectangleArea, calculateTrianglePerimeter, dan calculateTriangleArea.
+  - Sebuah fungsi calculateRectanglePerimeter
+    - Harus mengembalikan error ketika tidak diberikan dua parameter
+    - Harus mengembalikan error ketika diberikan parameter selain number
+    - Harus mengembalikan nilai yang tepat berdasarkan rumus keliling persegi
+  -Sebuah fungsi calculateRectangleArea
+    - Harus mengembalikan error ketika tidak diberikan dua parameter
+    - Harus mengembalikan error ketika diberikan parameter selain number
+    - Harus mengembalikan nilai yang tepat berdasarkan rumus luas persegi
+  - Sebuah fungsi calculateTrianglePerimeter
+    - Harus mengembalikan error ketika tidak diberikan 3 parameter
+    - Harus mengembalikan error ketika diberikan parameter selain number
+    - Harus mengembalikan nilai yang tepat berdasarkan rumus keliling segitiga
+  - Sebuah fungsi calculateTriangleArea
+    - Harus mengembalikan error ketika tidak diberikan 2 parameter
+    - Harus mengembalikan error ketika diberikan parameter selain number
+    - Harus mengembalikan nilai yang tepat berdasarkan rumus luas segitiga
