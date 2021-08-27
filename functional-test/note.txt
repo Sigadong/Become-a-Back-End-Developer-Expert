@@ -1,0 +1,20 @@
+## Functional Test
+Pengujian tahap tertinggi adalah Functional Test atau sering dikenal juga sebagai End-to-End Test. Pengujian ini memastikan
+aplikasi berjalan mulus, sesuai harapan, dan tanpa bugs ketika digunakan oleh end user di platform. Ketika mengembangkan
+aplikasi Web, functional testing dijalankan pada browser dan menguji seluruh fungsi mulai dari UI, alur, hingga aksesibilitas
+aplikasi. Functional test bertujuan untuk memastikan seluruh aplikasi dari hulu ke hilir harus berjalan normal.
+
+Functional test pada API harus dilakukan layaknya aplikasi client(Front-End) mengonsumsi API tersebut. Untuk REST API Functional Test dijalankan melalui protokol HTTP dengan membuat request pada sebuah resource dan menguji response yang dihasilkan.
+
+Contoh:
+GET /hello        | Selalu mengembalikan "Hello World".
+GET /hello/{name} | Mengembalikan "Hello, {name}".
+GET /weather      | Mengembalikan cuaca saat ini di lokasi IP Anda.
+
+Ketika menggunakan Postman untuk menguji sebuah REST API baik secara manual maupun otomatis,
+sebenarnya Anda sudah melakukan sebuah Functional Testing.
+Postman bukanlah satu-satunya cara dalam menguji fungsionalitas REST API. Jika mengembangkan REST API menggunakan Hapi, Anda
+bisa melakukan functional testing menggunakan kode JavaScript secara mudah tanpa perlu library atau tools tambahan.
+
+HTTP server yang dibangun menggunakan Hapi memiliki kemampuan untuk diuji route-nya tanpa harus benar-benar menjalankan
+server tersebut. Dengan begitu, pengujian dapat dilakukan dengan cepat dan tidak terintervensi oleh kompleksitasnya protokol TCP. 
