@@ -1,39 +1,39 @@
-# Menerapkan Automation Testing dalam Membangun Math API
-Math API tidak bisa disebut API bila tidak ada interface untuk mengaksesnya. Jadi, di latihan kali ini kita akan menambahkan
-HTTP server(menggunakan Hapi) agar program perhitungan matematika yang kita buat dapat diakses oleh end user.
+#  Rangkuman Automating Testing
+Berikut adalah rangkuman materi yang sudah kita pelajari:
 
-Seperti biasa, kita akan menerapkan TDD dalam pembuatan HTTP server. Tujuannya untuk menjaga fungsionalitas HTTP server bila
-terjadi perubahan. Untuk itu mari kita tentukan desain dari endpoint.
+a.Apa itu automation testing?
+Proses pengujian secara otomatis dilakukan oleh komputer dengan menuliskan script khusus. Proses pengujian ini biasanya
+dibuat oleh seorang software engineer langsung ataupun oleh seorang QA Engineer. Proses ini biasanya berkaitan dengan
+fungsionalitas dari sebuah aplikasi.
 
-*Fungsi                                       | *Endpoint
-add(pertambahan)                              |  GET /add/{a}/{b}
-subtract(pengurangan)                         |  GET /subtract/{a}/{b}
-multiply(perkalian)                           |  GET /multiply/{a}/{b}
-divide(pembagian)                             |  GET /divide/{a}/{b}
-rectangle perimeter(keliling persegi panjang) |  GET /rectangle/perimeter/{length}/{width}
-rectangle area(luas persegi panjang)          |  GET /rectangle/area/{length}/{width}
-triangle perimeter(keliling segitiga)         |  GET /triangle/perimeter/{sideA}/{sideB}/{base}
-triangle area (luas segitiga)                 |  GET /triangle/area/{base}/{height}
+b.Tingkatan pengujian:
+-Unit Test
+Pengujian yang berfokus pada satu unit. Unit yang diuji dapat berupa fungsi, objek, ataupun sebuah modul. Pastinya, ketika
+membuat unit test, kita tidak fokus pada perilaku objek lain yang berkolaborasi dengan objek yang sedang diuji. Kita lebih
+fokus pada perilaku unit yang diuji. Sehingga bila ada kegagalan dalam unit tesnya, kita tahu bahwa penyebabnya adalah unit
+yang sedang diuji.
+-Integration Test
+Pengujian yang menentukan keharmonisan sebuah unit dalam berkolaborasi. Artinya, pengujian tidak terfokus pada satu unit saja
+yang diuji melainkan banyak unit yang terlibat dalam membentuk sebuah fitur.
+-Functional Test
+Dikenal juga sebagai End-to-End Test (E2E) merupakan pengujian yang dilakukan untuk memastikan aplikasi berjalan dengan baik
+dari hulu ke hilir. Bahkan untuk mendapatkan hasil yang nyata, pengujian harus dijalankan pada platform yang sama seperti end
+user gunakan (biasanya sebuah simulasi).
 
+c.Apa itu TDD?
+Kultur pengembangan aplikasi yang diarahkan berdasarkan pengujian. Pengembahan dimulai dari menuliskan pengujian, menulis
+kode lulus untuk pengujian, dan memperbaiki kode yang sudah dituliskan. Siklus ini dikenal dengan istilah red-green-refactor.
 
-Seperti apa skenario yang akan kita buat kali ini? Untuk mempersingkat proses penyampaian, kita akan fokus terhadap
-behavior utama pada tiap endpoint-nya. Jadi, berikut adalah skenario pengujiannya.
-
-Skenario Pengujian:
-#Sebuah objek HTTP Server
-* Ketika GET /add
-  - Harus menghasilkan response code 200 dan mengembalikan payload value hasil pertambahan a dan b secara tepat
-* Ketika GET /subtract
-  _ Harus menghasilkan response code 200 dan mengembalikan payload value hasil pengurangan a dan b secara tepat
-* Ketika GET /multiply
-  - Harus menghasilkan response code 200 dan mengembalikan payload value hasil perkalian a dan b secara tepat
-* Ketika GET /divide
-  - Harus menghasilkan response code 200 dan mengembalikan payload value hasil pembagian a dan b secara tepat
-* Ketika GET /rectangle/perimeter
-  - Harus menghasilkan response code 200 dan mengembalikan payload value hasil perhitungan rumus keliling persegi panjang
-* Ketika GET /rectangle/area
-  - Harus menghasilkan response code 200 dan mengembalikan payload value hasil perhitungan rumus luas persegi panjang
-* Ketika GET /triangle/perimeter
-  - Harus menghasilkan response code 200 dan mengembalikan payload value hasil perhitungan rumus keliling segitiga
-* Ketika GET /triangle/area
-  - Harus menghasilkan response code 200 dan mengembalikan payload value hasil perhitungan rumus luas segitiga
+d.Test Double
+Istilah yang digunakan dalam menggantikan implementasi yang dibutuhkan dalam menjalankan pengujian pada sistem yang diuji.
+Test Double memiliki empat jenis:
+-Dummy
+Teknik di mana kita hanya memberikan sembarang nilai pada sebuah parameter (fungsi atau constructor) karena parameter
+tersebut butuh untuk diisi nilainya, meskipun sebenarnya nilainya tidak digunakan sama sekali.
+- Stub
+Teknik mengubah behavior objek (palsu atau asli) agar hasilnya terprediksi guna memenuhi skenario pengujian.
+-Mock
+Teknik mengubah implementasi dari sebuah objek agar memiliki behavior yang terprediksi serta memastikan implementasi tersebut
+diperlakukan dengan benar pada pengujian.
+-Spy
+Teknik untuk memata-matai sebuah fungsi dari objek guna memastikan fungsi tersebut diperlakukan dengan benar pada pengujian.
