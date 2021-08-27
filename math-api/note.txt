@@ -1,5 +1,4 @@
 # Menerapkan Automation Testing dalam Membangun Math API
-
 Math API tidak bisa disebut API bila tidak ada interface untuk mengaksesnya. Jadi, di latihan kali ini kita akan menambahkan
 HTTP server(menggunakan Hapi) agar program perhitungan matematika yang kita buat dapat diakses oleh end user.
 
